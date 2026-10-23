@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171717">
+<title>AS Collection | Order Form</title>
+<style>
+:root{--ink:#171717;--muted:#6b6b6b;--cream:#f7f4ee;--gold:#b69a65;--line:#e8e1d5}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.wrap{max-width:680px;margin:0 auto;padding:24px 16px 40px}
+.brand{text-align:center;padding:26px 18px 22px;background:#171717;color:#fff;border-radius:18px 18px 0 0}
+.brand .monogram{width:48px;height:48px;border:1px solid var(--gold);border-radius:50%;display:inline-grid;place-items:center;color:var(--gold);font-family:Georgia,serif;font-size:20px;margin-bottom:10px}
+.brand h1{font-family:Georgia,'Times New Roman',serif;font-size:27px;letter-spacing:2px;margin:0 0 8px;font-weight:500}
+.brand p{margin:0;color:#d8d0c3;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}
+.card{background:#fff;padding:24px;border:1px solid var(--line);border-top:0;border-radius:0 0 18px 18px;box-shadow:0 12px 30px #0000000a}
+.intro{font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 22px;text-align:center}
+h2{font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:500;text-align:center;margin:0 0 6px}
+.rule{width:48px;height:2px;background:var(--gold);margin:0 auto 22px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.field{margin-bottom:15px}.full{grid-column:1/-1}
+label{display:block;font-size:12px;font-weight:700;letter-spacing:.3px;margin:0 0 7px}
+input,select,textarea{width:100%;padding:13px 12px;border:1px solid #ded8ce;border-radius:9px;background:#fff;font-size:15px;color:var(--ink);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px #b69a651a}
+textarea{min-height:88px;resize:vertical}
+button{width:100%;border:0;border-radius:10px;background:#171717;color:#fff;padding:16px;font-size:15px;font-weight:700;letter-spacing:.3px;cursor:pointer;margin-top:5px}
+button:hover{background:#30291f}.note{text-align:center;color:var(--muted);font-size:12px;line-height:1.5;margin:13px 0 0}
+.footer{text-align:center;font-size:11px;color:#777;margin-top:18px;letter-spacing:1px}
+@media(max-width:480px){.wrap{padding:12px 10px 28px}.card{padding:20px 16px}.grid{grid-template-columns:1fr;gap:0}.full{grid-column:auto}.brand h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand">
+    <div class="monogram">AS</div>
+    <h1>AS COLLECTION</h1>
+    <p>Everyday elegance · Pakistan-wide delivery</p>
+  </header>
+  <main class="card">
+    <h2>Place Your Order</h2>
+    <div class="rule"></div>
+    <p class="intro">Thank you for choosing AS Collection. Please enter your details carefully. Your order request will open in WhatsApp for confirmation.</p>
+    <form id="orderForm">
+      <div class="grid">
+        <div class="field">
+          <label for="name">FULL NAME *</label>
+          <input id="name" name="name" autocomplete="name" required placeholder="Your full name">
+        </div>
+        <div class="field">
+          <label for="phone">WHATSAPP NUMBER *</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="03XX XXXXXXX">
+        </div>
+        <div class="field">
+          <label for="city">CITY *</label>
+          <input id="city" name="city" required autocomplete="address-level2" placeholder="Your city">
+        </div>
+        <div class="field">
+          <label for="type">ORDER TYPE *</label>
+          <select id="type" name="type" required>
+            <option value="">Select order type</option>
+            <option>Retail</option>
+            <option>Wholesale</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="address">COMPLETE DELIVERY ADDRESS *</label>
+          <textarea id="address" name="address" autocomplete="street-address" required placeholder="House / street / area / landmark"></textarea>
+        </div>
+        <div class="field">
+          <label for="design">TROUSER DESIGN / CODE *</label>
+          <input id="design" name="design" required placeholder="e.g. Design 01">
+        </div>
+        <div class="field">
+          <label for="size">SIZE *</label>
+          <select id="size" name="size" required>
+            <option value="">Select size</option>
+            <option>Small</option><option>Medium</option><option>Large</option>
+            <option>XL</option><option>XXL</option><option>Other / Please confirm</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="quantity">QUANTITY *</label>
+          <select id="quantity" name="quantity" required>
+            <option value="">Select quantity</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6–10</option><option>11–20</option><option>20+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="notes">ADDITIONAL NOTES (OPTIONAL)</label>
+          <input id="notes" name="notes" placeholder="Any special request">
+        </div>
+      </div>
+      <button type="submit">SUBMIT ORDER ON WHATSAPP →</button>
+      <p class="note">Your WhatsApp will open with your order details ready to send. Your order is confirmed only after AS Collection replies.</p>
+    </form>
+  </main>
+  <div class="footer">AS COLLECTION · THANK YOU FOR SHOPPING WITH US</div>
+</div>
+<script>
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const message = [
+    '✨ *AS COLLECTION — ORDER REQUEST* ✨',
+    '',
+    '*Name:* ' + v('name'),
+    '*Customer WhatsApp:* ' + v('phone'),
+    '*City:* ' + v('city'),
+    '*Complete Address:* ' + v('address'),
+    '*Order Type:* ' + v('type'),
+    '*Design / Code:* ' + v('design'),
+    '*Size:* ' + v('size'),
+    '*Quantity:* ' + v('quantity'),
+    v('notes') ? '*Additional Notes:* ' + v('notes') : '',
+    '',
+    'Please confirm availability, total amount and delivery details.'
+  ].filter(Boolean).join('\n');
+  window.location.href = 'https://wa.me/923202032350?text=' + encodeURIComponent(message);
+});
+</script>
+</body>
+</html>
